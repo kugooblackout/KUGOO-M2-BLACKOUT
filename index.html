@@ -219,7 +219,7 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
         }
 
-        /* ---------- СЛАЙДЕР ---------- */
+        /* ---------- СЛАЙДЕР (УМЕНЬШЕННЫЙ) ---------- */
         .slider-wrapper {
             position: relative;
             border-radius: 16px;
@@ -228,6 +228,9 @@
             background: #121212;
             aspect-ratio: 9 / 16;
             margin-top: 1.5rem;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .slider-track {
@@ -251,7 +254,6 @@
             display: block;
         }
 
-        /* ---------- ТОЧКИ НАВИГАЦИИ ---------- */
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -280,7 +282,6 @@
             background: #555;
         }
 
-        /* ---------- СТРЕЛКИ ---------- */
         .slider-arrow {
             position: absolute;
             top: 50%;
@@ -288,8 +289,8 @@
             background: rgba(0, 0, 0, 0.6);
             color: #fff;
             border: none;
-            font-size: 1.8rem;
-            padding: 0.5rem 0.8rem;
+            font-size: 1.5rem;
+            padding: 0.4rem 0.7rem;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
@@ -303,14 +304,13 @@
         }
 
         .slider-arrow.prev {
-            left: 10px;
+            left: 8px;
         }
 
         .slider-arrow.next {
-            right: 10px;
+            right: 8px;
         }
 
-        /* ---------- ОСТАЛЬНЫЕ БЛОКИ ---------- */
         .info-block {
             background: #121212;
             padding: 1.5rem 2rem;
@@ -358,12 +358,11 @@
             margin-top: 2rem;
         }
 
+        /* ---------- АДАПТИВ ---------- */
         @media (min-width: 600px) {
             .slider-wrapper {
                 aspect-ratio: 4 / 3;
-                max-width: 700px;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 480px;
             }
         }
 
@@ -387,6 +386,9 @@
                 font-size: 1.2rem;
                 padding: 0.3rem 0.6rem;
             }
+            .slider-wrapper {
+                max-width: 320px;
+            }
         }
     </style>
 </head>
@@ -405,9 +407,9 @@
             <a href="#gallery" class="btn">Смотреть сборку</a>
         </section>
 
-        <!-- ЧТО ИЗМЕНЕНО -->
+        <!-- ИЗМЕНЕНИЯ -->
         <section class="section">
-            <h2 class="section-title">Что <span>изменено</span></h2>
+            <h2 class="section-title"><span>Изменения</span></h2>
             <div class="features-grid">
 
                 <div class="feature-card">
@@ -483,12 +485,10 @@
 
                 </div>
 
-                <!-- СТРЕЛКИ -->
                 <button class="slider-arrow prev" id="prevBtn">&#10094;</button>
                 <button class="slider-arrow next" id="nextBtn">&#10095;</button>
             </div>
 
-            <!-- ТОЧКИ -->
             <div class="slider-dots" id="dotsContainer">
                 <button class="dot active" data-index="0"></button>
                 <button class="dot" data-index="1"></button>
@@ -502,7 +502,7 @@
             <div class="info-block">
                 <p>Общая сумма вложенных средств в кастом:</p>
                 <span class="price">15 000+ ₽</span>
-                <p style="color: #666; font-size: 0.9rem;">Запчасти, материалы и работа</p>
+                <p style="color: #666; font-size: 0.9rem;">Запчасти и материалы</p>
             </div>
         </section>
 
@@ -532,24 +532,20 @@
             let currentIndex = 0;
             const totalSlides = slides.length;
             let autoSlideInterval = null;
-            const AUTO_SLIDE_DELAY = 5000; // 5 секунд
+            const AUTO_SLIDE_DELAY = 5000;
 
-            // Функция переключения слайда
             function goToSlide(index) {
                 if (index < 0) index = totalSlides - 1;
                 if (index >= totalSlides) index = 0;
                 currentIndex = index;
 
-                // Сдвигаем трек
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-                // Обновляем активную точку
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
             }
 
-            // Переключение на следующий/предыдущий
             function nextSlide() {
                 goToSlide(currentIndex + 1);
             }
@@ -558,13 +554,11 @@
                 goToSlide(currentIndex - 1);
             }
 
-            // Запуск автопрокрутки
             function startAutoSlide() {
                 if (autoSlideInterval) clearInterval(autoSlideInterval);
                 autoSlideInterval = setInterval(nextSlide, AUTO_SLIDE_DELAY);
             }
 
-            // Остановка автопрокрутки
             function stopAutoSlide() {
                 if (autoSlideInterval) {
                     clearInterval(autoSlideInterval);
@@ -572,15 +566,11 @@
                 }
             }
 
-            // Сброс таймера при ручном взаимодействии
             function resetAutoSlide() {
                 stopAutoSlide();
                 startAutoSlide();
             }
 
-            // --- ОБРАБОТЧИКИ СОБЫТИЙ ---
-
-            // Клик по точкам
             dots.forEach((dot) => {
                 dot.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
@@ -591,7 +581,6 @@
                 });
             });
 
-            // Клик по стрелкам
             nextBtn.addEventListener('click', function() {
                 nextSlide();
                 resetAutoSlide();
@@ -602,12 +591,10 @@
                 resetAutoSlide();
             });
 
-            // Остановка автопрокрутки при наведении на слайдер
             const sliderWrapper = document.querySelector('.slider-wrapper');
             sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
             sliderWrapper.addEventListener('mouseleave', startAutoSlide);
 
-            // Для мобильных: свайпы (базовые)
             let touchStartX = 0;
             let touchEndX = 0;
 
@@ -618,7 +605,7 @@
             sliderWrapper.addEventListener('touchend', function(e) {
                 touchEndX = e.changedTouches[0].screenX;
                 const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 40) { // минимальный порог свайпа
+                if (Math.abs(diff) > 40) {
                     if (diff > 0) {
                         nextSlide();
                     } else {
@@ -628,12 +615,9 @@
                 }
             }, { passive: true });
 
-            // Инициализация — первый слайд
             goToSlide(0);
-            // Запускаем автопрокрутку
             startAutoSlide();
 
-            // Останавливаем автопрокрутку, если страница не видна (экономия ресурсов)
             document.addEventListener('visibilitychange', function() {
                 if (document.hidden) {
                     stopAutoSlide();
