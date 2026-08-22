@@ -216,8 +216,8 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
@@ -225,18 +225,16 @@
             background: #121212;
             border-radius: 16px;
             overflow: hidden;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 9 / 16;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             border: 2px solid #222;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
             border-color: #a855f7;
             box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
         }
@@ -246,21 +244,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .gallery-item .file-name {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ccc;
-            font-size: 0.7rem;
-            padding: 0.3rem 0.5rem;
-            text-align: center;
-            font-family: monospace;
-            letter-spacing: 0.5px;
-            border-top: 1px solid #2a2a2a;
         }
 
         .info-block {
@@ -326,12 +309,18 @@
             .specs-grid {
                 grid-template-columns: 1fr;
             }
+            .gallery-item {
+                aspect-ratio: 9 / 16;
+            }
+        }
+
+        @media (min-width: 701px) {
             .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.2rem;
             }
             .gallery-item {
-                aspect-ratio: 16 / 9;
+                aspect-ratio: 4 / 3;
             }
         }
     </style>
@@ -414,18 +403,15 @@
             <div class="gallery-grid">
 
                 <div class="gallery-item">
-                    <img src="4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png" alt="KUGOO M2 BLACKOUT вид 1" />
-                    <span class="file-name">4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png</span>
+                    <img src="4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png" alt="KUGOO M2 BLACKOUT" />
                 </div>
 
                 <div class="gallery-item">
-                    <img src="IMG_0674.jpeg" alt="KUGOO M2 BLACKOUT вид 2" />
-                    <span class="file-name">IMG_0674.jpeg</span>
+                    <img src="IMG_0674.jpeg" alt="KUGOO M2 BLACKOUT" />
                 </div>
 
                 <div class="gallery-item">
-                    <img src="IMG_1985.jpeg" alt="KUGOO M2 BLACKOUT вид 3" />
-                    <span class="file-name">IMG_1985.jpeg</span>
+                    <img src="IMG_1985.jpeg" alt="KUGOO M2 BLACKOUT" />
                 </div>
 
             </div>
@@ -436,7 +422,7 @@
             <h2 class="section-title">Инвестиции в <span>проект</span></h2>
             <div class="info-block">
                 <p>Общая сумма вложенных средств в кастом:</p>
-                <span class="price">15 000 ₽</span>
+                <span class="price">15 000+ ₽</span>
                 <p style="color: #666; font-size: 0.9rem;">Запчасти, материалы и работа</p>
             </div>
         </section>
