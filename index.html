@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -115,6 +119,7 @@
             font-weight: 700;
             margin-bottom: 2rem;
             letter-spacing: -0.5px;
+            text-align: center;
         }
 
         .section-title span {
@@ -214,48 +219,98 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+        /* ---------- СЛАЙДЕР ---------- */
+        .slider-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #222;
+            background: #121212;
+            aspect-ratio: 9 / 16;
             margin-top: 1.5rem;
         }
 
-        .gallery-item {
-            background: #121212;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 3 / 4;
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            height: 100%;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #222;
-            transition: all 0.3s ease;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
-            border-color: #a855f7;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
-        }
-
-        .gallery-item img {
+        .slider-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        @media (min-width: 600px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.2rem;
-            }
-            .gallery-item {
-                aspect-ratio: 4 / 3;
-            }
+        /* ---------- ТОЧКИ НАВИГАЦИИ ---------- */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-top: 1rem;
         }
 
+        .slider-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .slider-dots .dot.active {
+            background: #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            transform: scale(1.2);
+        }
+
+        .slider-dots .dot:hover {
+            background: #555;
+        }
+
+        /* ---------- СТРЕЛКИ ---------- */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            font-size: 1.8rem;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(168, 85, 247, 0.6);
+        }
+
+        .slider-arrow.prev {
+            left: 10px;
+        }
+
+        .slider-arrow.next {
+            right: 10px;
+        }
+
+        /* ---------- ОСТАЛЬНЫЕ БЛОКИ ---------- */
         .info-block {
             background: #121212;
             padding: 1.5rem 2rem;
@@ -303,6 +358,15 @@
             margin-top: 2rem;
         }
 
+        @media (min-width: 600px) {
+            .slider-wrapper {
+                aspect-ratio: 4 / 3;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
         @media (max-width: 700px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -318,6 +382,10 @@
             }
             .specs-grid {
                 grid-template-columns: 1fr;
+            }
+            .slider-arrow {
+                font-size: 1.2rem;
+                padding: 0.3rem 0.6rem;
             }
         }
     </style>
@@ -394,23 +462,37 @@
             </div>
         </section>
 
-        <!-- ГАЛЕРЕЯ -->
+        <!-- ГАЛЕРЕЯ / СЛАЙДЕР -->
         <section class="section" id="gallery">
             <h2 class="section-title">Фото <span>проекта</span></h2>
-            <div class="gallery-grid">
 
-                <div class="gallery-item">
-                    <img src="4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png" alt="KUGOO M2 BLACKOUT" />
+            <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+
+                    <div class="slider-slide">
+                        <img src="4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png" alt="KUGOO M2 BLACKOUT 1" />
+                    </div>
+
+                    <div class="slider-slide">
+                        <img src="IMG_2048.jpeg" alt="KUGOO M2 BLACKOUT 2" />
+                    </div>
+
+                    <div class="slider-slide">
+                        <img src="IMG_1985.jpeg" alt="KUGOO M2 BLACKOUT 3" />
+                    </div>
+
                 </div>
 
-                <div class="gallery-item">
-                    <img src="IMG_2048.jpeg" alt="KUGOO M2 BLACKOUT" />
-                </div>
+                <!-- СТРЕЛКИ -->
+                <button class="slider-arrow prev" id="prevBtn">&#10094;</button>
+                <button class="slider-arrow next" id="nextBtn">&#10095;</button>
+            </div>
 
-                <div class="gallery-item">
-                    <img src="IMG_1985.jpeg" alt="KUGOO M2 BLACKOUT" />
-                </div>
-
+            <!-- ТОЧКИ -->
+            <div class="slider-dots" id="dotsContainer">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
             </div>
         </section>
 
@@ -438,5 +520,129 @@
         </footer>
 
     </div>
+
+    <script>
+        (function() {
+            const track = document.getElementById('sliderTrack');
+            const slides = track.querySelectorAll('.slider-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoSlideInterval = null;
+            const AUTO_SLIDE_DELAY = 5000; // 5 секунд
+
+            // Функция переключения слайда
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                currentIndex = index;
+
+                // Сдвигаем трек
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // Обновляем активную точку
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            // Переключение на следующий/предыдущий
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            // Запуск автопрокрутки
+            function startAutoSlide() {
+                if (autoSlideInterval) clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(nextSlide, AUTO_SLIDE_DELAY);
+            }
+
+            // Остановка автопрокрутки
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+
+            // Сброс таймера при ручном взаимодействии
+            function resetAutoSlide() {
+                stopAutoSlide();
+                startAutoSlide();
+            }
+
+            // --- ОБРАБОТЧИКИ СОБЫТИЙ ---
+
+            // Клик по точкам
+            dots.forEach((dot) => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (index !== currentIndex) {
+                        goToSlide(index);
+                        resetAutoSlide();
+                    }
+                });
+            });
+
+            // Клик по стрелкам
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            // Остановка автопрокрутки при наведении на слайдер
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
+            sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+
+            // Для мобильных: свайпы (базовые)
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            sliderWrapper.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            sliderWrapper.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) { // минимальный порог свайпа
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    resetAutoSlide();
+                }
+            }, { passive: true });
+
+            // Инициализация — первый слайд
+            goToSlide(0);
+            // Запускаем автопрокрутку
+            startAutoSlide();
+
+            // Останавливаем автопрокрутку, если страница не видна (экономия ресурсов)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    stopAutoSlide();
+                } else {
+                    startAutoSlide();
+                }
+            });
+
+        })();
+    </script>
 </body>
 </html>
