@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KUGOO M2 BLACKOUT — Custom Project</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+
+body{
+
+background:#030006;
+color:white;
+font-family:Inter,Arial,sans-serif;
+overflow-x:hidden;
+
+}
+
+
+body::before{
+
+content:"";
+position:fixed;
+
+width:650px;
+height:650px;
+
+background:#a855f7;
+filter:blur(220px);
+
+opacity:.22;
+
+right:-200px;
+top:150px;
+
+z-index:-1;
+
+}
+
+
+
+/* HEADER */
+
+
+header{
+
+position:fixed;
+top:0;
+
+width:100%;
+
+padding:25px 8%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid #281033;
+
+z-index:10;
+
+}
+
+
+.logo{
+
+font-size:22px;
+font-weight:900;
+letter-spacing:3px;
+
+}
+
+
+.logo span{
+
+color:#b44cff;
+
+}
+
+
+
+header a{
+
+color:#aaa;
+text-decoration:none;
+margin-left:30px;
+
+}
+
+
+
+/* HERO */
+
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+padding:120px 8%;
+
+position:relative;
+
+}
+
+
+
+.info{
+
+width:45%;
+z-index:2;
+
+animation:show 1.2s ease;
+
+}
+
+
+
+.small{
+
+color:#c084fc;
+
+letter-spacing:5px;
+
+font-size:12px;
+
+}
+
+
+
+h1{
+
+font-size:95px;
+
+line-height:.85;
+
+letter-spacing:-6px;
+
+margin:25px 0;
+
+}
+
+
+
+h1 span{
+
+color:#b44cff;
+
+}
+
+
+
+.description{
+
+color:#999;
+
+font-size:18px;
+
+line-height:1.8;
+
+max-width:520px;
+
+}
+
+
+
+.photo{
+
+position:absolute;
+
+right:0;
+
+width:60%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+
+
+.photo img{
+
+width:90%;
+
+filter:drop-shadow(0 0 55px #a855f7);
+
+animation:float 5s infinite ease-in-out;
+
+}
+
+
+
+
+/* BUTTON */
+
+
+.btn{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 45px;
+
+border-radius:50px;
+
+background:#a855f7;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:800;
+
+box-shadow:0 0 40px #a855f7;
+
+}
+
+
+
+
+/* SECTIONS */
+
+
+section{
+
+padding:100px 8%;
+
+}
+
+
+
+.title{
+
+font-size:60px;
+
+letter-spacing:-4px;
+
+margin-bottom:60px;
+
+}
+
+
+
+/* CARDS */
+
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+}
+
+
+
+.card{
+
+background:
+
+linear-gradient(145deg,#14001d,#050006);
+
+border:1px solid #35104d;
+
+border-radius:30px;
+
+padding:40px;
+
+transition:.4s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 40px #8b20d6;
+
+}
+
+
+
+.card h2{
+
+margin-bottom:20px;
+
+}
+
+
+
+.card p{
+
+color:#999;
+
+line-height:1.7;
+
+}
+
+
+
+
+
+/* STATS */
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+}
+
+
+
+.stat{
+
+text-align:center;
+
+}
+
+
+
+.stat h2{
+
+font-size:38px;
+
+color:#c084fc;
+
+}
+
+
+
+
+
+/* FINAL */
+
+
+.final{
+
+text-align:center;
+
+background:
+
+radial-gradient(circle,#300045,#030006);
+
+padding:150px 20px;
+
+}
+
+
+
+.final h2{
+
+font-size:80px;
+
+letter-spacing:-5px;
+
+}
+
+
+
+
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+color:#777;
+
+font-size:14px;
+
+line-height:1.8;
+
+}
+
+
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+
+
+@keyframes show{
+
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+
+
+
+@media(max-width:900px){
+
+
+.hero{
+
+display:block;
+
+}
+
+
+.info{
+
+width:100%;
+
+}
+
+
+.photo{
+
+position:relative;
+
+width:100%;
+
+margin-top:50px;
+
+}
+
+
+h1{
+
+font-size:60px;
+
+}
+
+
+
+.cards,.stats{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+
+<div class="logo">
+KUGOO <span>M2</span>
+</div>
+
+
+<div>
+
+<a href="#build">Кастом</a>
+
+<a href="#about">Проект</a>
+
+</div>
+
+
+</header>
+
+
+
+
+<div class="hero">
+
+
+
+<div class="info">
+
+
+<div class="small">
+CUSTOM PROJECT
+</div>
+
+
+
+<h1>
+
+KUGOO M2
+
+<br>
+
+<span>BLACKOUT</span>
+
+</h1>
+
+
+
+<p class="description">
+
+Кастомная сборка на базе KUGOO M2.
+
+Чёрный стиль, фиолетовый неон,
+подсветка деки, ключ зажигания
+и уникальные детали,
+создающие собственный характер.
+
+</p>
+
+
+
+<a class="btn" href="#build">
+
+Смотреть сборку
+
+</a>
+
+
+
+</div>
+
+
+
+
+<div class="photo">
+
+<img src="scooter.jpg">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<section id="build">
+
+
+<h2 class="title">
+
+Что изменено
+
+</h2>
+
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<h2>
+💜 Подсветка деки
+</h2>
+
+<p>
+
+Кастомный стробоскопический эффект,
+который раскрывает стиль проекта ночью.
+
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>
+🔑 Ключ зажигания
+</h2>
+
+<p>
+
+Установлен отдельный запуск через ключ.
+Деталь, которая делает сборку уникальной.
+
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>
+🛑 Кастомные тормоза
+</h2>
+
+<p>
+
+Доработанная тормозная система
+для уверенного контроля.
+
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<section id="about">
+
+
+<h2 class="title">
+
+Характер проекта
+
+</h2>
+
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<h2>KUGOO M2</h2>
+
+<p>БАЗА</p>
+
+</div>
+
+
+
+<div class="stat">
+
+<h2>LED</h2>
+
+<p>ДЕКА</p>
+
+</div>
+
+
+
+
+<div class="stat">
+
+<h2>PURPLE</h2>
+
+<p>СТИЛЬ</p>
+
+</div>
+
+
+
+
+<div class="stat">
+
+<h2>1/1</h2>
+
+<p>КАСТОМ</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<div class="final">
+
+
+<h2>
+
+НЕ СЕРИЙНЫЙ.
+
+<br>
+
+СВОЙ.
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<footer>
+
+
+KUGOO M2 BLACKOUT
+
+<br>
+
+CUSTOM PROJECT © 2026
+
+
+<br><br>
+
+
+Данный проект является личной кастомной сборкой.
+
+<br>
+
+Не имеет отношения к компании KUGOO JILONG
+
+<br>
+
+и не является официальным продуктом бренда.
+
+
+</footer>
+
+
+
+
+
+</body>
+
+</html>
