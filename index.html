@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
     <style>
+        /* ===== ОСНОВНЫЕ СТИЛИ (без изменений) ===== */
         html {
             scroll-behavior: smooth;
         }
@@ -219,6 +220,7 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
         }
 
+        /* ===== СЛАЙДЕР ===== */
         .slider-wrapper {
             position: relative;
             border-radius: 16px;
@@ -310,6 +312,7 @@
             right: 8px;
         }
 
+        /* ===== ИНВЕСТИЦИИ ===== */
         .info-block {
             background: #121212;
             padding: 1.5rem 2rem;
@@ -333,31 +336,7 @@
             margin: 0.5rem 0;
         }
 
-        .disclaimer {
-            background: #121212;
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            text-align: center;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-        }
-
-        .disclaimer strong {
-            color: #a855f7;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 3rem 0 1.5rem;
-            color: #555;
-            font-size: 0.85rem;
-            border-top: 1px solid #181818;
-            margin-top: 2rem;
-        }
-
-        /* ---------- РАЗДЕЛ "В РЕАЛЬНОМ ВРЕМЕНИ" ---------- */
+        /* ===== РАЗДЕЛ "В РЕАЛЬНОМ ВРЕМЕНИ" ===== */
         .realtime-section {
             margin-top: 1.5rem;
             padding: 1.5rem;
@@ -421,6 +400,68 @@
             margin-top: 0.2rem;
         }
 
+        /* ===== ПОДВАЛ С ИКОНКОЙ TikTok ===== */
+        .footer {
+            text-align: center;
+            padding: 3rem 0 1.5rem;
+            color: #555;
+            font-size: 0.85rem;
+            border-top: 1px solid #181818;
+            margin-top: 2rem;
+        }
+
+        .footer .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 0.8rem;
+        }
+
+        .footer .social-link:hover {
+            border-color: #a855f7;
+            background: #2a1a3a;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Кастомная иконка TikTok через CSS */
+        .icon-tiktok {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            position: relative;
+        }
+
+        .icon-tiktok svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        .disclaimer {
+            background: #121212;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .disclaimer strong {
+            color: #a855f7;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 700px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -460,7 +501,7 @@
 <body>
     <div class="container">
 
-        <!-- ГЕРОЙ -->
+        <!-- ГЕРОЙ (без изменений) -->
         <section class="hero">
             <div class="project-tag">CUSTOM PROJECT</div>
             <h1>KUGOO M2</h1>
@@ -476,27 +517,22 @@
         <section class="section">
             <h2 class="section-title"><span>Изменения</span></h2>
             <div class="features-grid">
-
                 <div class="feature-card">
                     <h3>Подсветка деки</h3>
                     <p>Кастомный стробоскопический эффект, который раскрывает стиль проекта ночью.</p>
                 </div>
-
                 <div class="feature-card">
                     <h3>Ключ зажигания</h3>
                     <p>Установлен отдельный запуск через ключ. Деталь, которая делает сборку уникальной.</p>
                 </div>
-
                 <div class="feature-card">
                     <h3>Кастомные тормоза</h3>
                     <p>Доработанная тормозная система для уверенного контроля.</p>
                 </div>
-
                 <div class="feature-card">
                     <h3>Новый руль и вынос</h3>
                     <p>Установлен удобный и стильный руль вместе с новым выносом для комфортной посадки.</p>
                 </div>
-
             </div>
         </section>
 
@@ -537,28 +573,21 @@
         <!-- ГАЛЕРЕЯ / СЛАЙДЕР -->
         <section class="section" id="gallery">
             <h2 class="section-title">Фото <span>проекта</span></h2>
-
             <div class="slider-wrapper">
                 <div class="slider-track" id="sliderTrack">
-
                     <div class="slider-slide">
                         <img src="4A47FCD9-AA33-4C93-A3A7-BE855ABA38DE.png" alt="KUGOO M2 BLACKOUT 1" />
                     </div>
-
                     <div class="slider-slide">
                         <img src="IMG_2048.jpeg" alt="KUGOO M2 BLACKOUT 2" />
                     </div>
-
                     <div class="slider-slide">
                         <img src="IMG_1985.jpeg" alt="KUGOO M2 BLACKOUT 3" />
                     </div>
-
                 </div>
-
                 <button class="slider-arrow prev" id="prevBtn">&#10094;</button>
                 <button class="slider-arrow next" id="nextBtn">&#10095;</button>
             </div>
-
             <div class="slider-dots" id="dotsContainer">
                 <button class="dot active" data-index="0"></button>
                 <button class="dot" data-index="1"></button>
@@ -599,16 +628,24 @@
             </div>
         </section>
 
-        <!-- ПОДВАЛ -->
+        <!-- ПОДВАЛ С ИКОНКОЙ TIKTOK -->
         <footer class="footer">
             <p>Кастомный проект KUGOO M2 BLACKOUT</p>
+            <a href="https://www.tiktok.com/@krutoykugoovod" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+                <!-- Иконка TikTok через SVG -->
+                <span class="icon-tiktok">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5 2.592 2.592 0 0 1-2.59-2.5 2.592 2.592 0 0 1 2.59-2.5c.36 0 .7.08 1.01.22v-3.2a5.79 5.79 0 0 0-1.01-.07 5.79 5.79 0 0 0-5.8 5.79 5.79 5.79 0 0 0 5.8 5.79 5.79 5.79 0 0 0 5.8-5.79V9.03a8.12 8.12 0 0 0 4.87 1.56V7.57a4.28 4.28 0 0 1-2.15-1.75z"/>
+                    </svg>
+                </span>
+            </a>
         </footer>
 
     </div>
 
     <script>
+        // ===== СЛАЙДЕР =====
         (function() {
-            // СЛАЙДЕР
             const track = document.getElementById('sliderTrack');
             const slides = track.querySelectorAll('.slider-slide');
             const dots = document.querySelectorAll('.dot');
