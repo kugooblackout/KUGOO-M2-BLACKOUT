@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ (без изменений) ===== */
         html {
             scroll-behavior: smooth;
         }
@@ -220,7 +219,6 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
         }
 
-        /* ===== СЛАЙДЕР ===== */
         .slider-wrapper {
             position: relative;
             border-radius: 16px;
@@ -312,7 +310,6 @@
             right: 8px;
         }
 
-        /* ===== ИНВЕСТИЦИИ ===== */
         .info-block {
             background: #121212;
             padding: 1.5rem 2rem;
@@ -336,7 +333,6 @@
             margin: 0.5rem 0;
         }
 
-        /* ===== РАЗДЕЛ "В РЕАЛЬНОМ ВРЕМЕНИ" ===== */
         .realtime-section {
             margin-top: 1.5rem;
             padding: 1.5rem;
@@ -400,7 +396,6 @@
             margin-top: 0.2rem;
         }
 
-        /* ===== ПОДВАЛ С ИКОНКОЙ TikTok ===== */
         .footer {
             text-align: center;
             padding: 3rem 0 1.5rem;
@@ -432,7 +427,6 @@
             box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);
         }
 
-        /* Кастомная иконка TikTok через CSS */
         .icon-tiktok {
             display: inline-block;
             width: 22px;
@@ -461,7 +455,6 @@
             color: #a855f7;
         }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 700px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -501,7 +494,7 @@
 <body>
     <div class="container">
 
-        <!-- ГЕРОЙ (без изменений) -->
+        <!-- ГЕРОЙ -->
         <section class="hero">
             <div class="project-tag">CUSTOM PROJECT</div>
             <h1>KUGOO M2</h1>
@@ -631,8 +624,7 @@
         <!-- ПОДВАЛ С ИКОНКОЙ TIKTOK -->
         <footer class="footer">
             <p>Кастомный проект KUGOO M2 BLACKOUT</p>
-            <a href="https://www.tiktok.com/@krutoykugoovod" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
-                <!-- Иконка TikTok через SVG -->
+            <a href="https://www.tiktok.com/@kugooblackout" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
                 <span class="icon-tiktok">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5 2.592 2.592 0 0 1-2.59-2.5 2.592 2.592 0 0 1 2.59-2.5c.36 0 .7.08 1.01.22v-3.2a5.79 5.79 0 0 0-1.01-.07 5.79 5.79 0 0 0-5.8 5.79 5.79 5.79 0 0 0 5.8 5.79 5.79 5.79 0 0 0 5.8-5.79V9.03a8.12 8.12 0 0 0 4.87 1.56V7.57a4.28 4.28 0 0 1-2.15-1.75z"/>
@@ -644,7 +636,6 @@
     </div>
 
     <script>
-        // ===== СЛАЙДЕР =====
         (function() {
             const track = document.getElementById('sliderTrack');
             const slides = track.querySelectorAll('.slider-slide');
