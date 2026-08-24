@@ -593,7 +593,7 @@
             <h2 class="section-title">Инвестиции в <span>проект</span></h2>
             <div class="info-block">
                 <p>Общая сумма вложенных средств в кастом:</p>
-                <span class="price">13 166 рублей</span>
+                <span class="price" id="costDisplay">13 166 рублей</span>
                 <p style="color: #666; font-size: 0.9rem;">Запчасти и материалы</p>
             </div>
         </section>
@@ -608,7 +608,7 @@
                 </div>
                 <div class="realtime-item">
                     <span class="rt-label">Пробег</span>
-                    <span class="rt-value">2 114 км</span>
+                    <span class="rt-value" id="mileageDisplay">2 125 км</span>
                 </div>
             </div>
         </section>
@@ -636,6 +636,27 @@
     </div>
 
     <script>
+        // ПОДГРУЗКА ДАННЫХ ИЗ JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Обновляем пробег
+                const mileageEl = document.getElementById('mileageDisplay');
+                if (mileageEl) {
+                    mileageEl.textContent = data.mileage + ' км';
+                }
+                // Обновляем затраты
+                const costEl = document.getElementById('costDisplay');
+                if (costEl) {
+                    costEl.textContent = data.cost + ' рублей';
+                }
+            })
+            .catch(error => {
+                // Если файл не загрузился — показываем статичные значения (ничего не ломаем)
+                console.log('data.json не загружен, используем значения по умолчанию');
+            });
+
+        // СЛАЙДЕР
         (function() {
             const track = document.getElementById('sliderTrack');
             const slides = track.querySelectorAll('.slider-slide');
